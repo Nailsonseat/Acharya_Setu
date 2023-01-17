@@ -1,5 +1,17 @@
+import 'package:acharya_setu/Routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp();
+  runApp(const AcharyaSetuMain());
+}
+
+class AcharyaSetuMain extends StatelessWidget {
+  const AcharyaSetuMain({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      routerConfig: routes,
+    );
+  }
 }
