@@ -13,14 +13,14 @@ class HomePage extends StatelessWidget {
       body: Center(
           child: Column(
         children: [
-          Text("This is home page"),
+          const Text("This is home page"),
           ElevatedButton(
             onPressed: () => context.go('/settings'),
-            child: Text("Settings"),
+            child: const Text("Settings"),
           ),
           ElevatedButton(
             onPressed: () => context.go('/browser'),
-            child: Text("Browser"),
+            child: const Text("Browser"),
           ),
         ],
       )),
