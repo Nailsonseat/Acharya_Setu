@@ -1,4 +1,4 @@
-import 'package:acharya_setu/Routes.dart';
+import 'package:acharya_setu/services/routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {

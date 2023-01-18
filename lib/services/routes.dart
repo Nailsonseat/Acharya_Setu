@@ -1,6 +1,6 @@
-import 'package:acharya_setu/Screens/HomePage.dart';
-import 'package:acharya_setu/Screens/QuestionBankBrowser.dart';
-import 'package:acharya_setu/Screens/Settings.dart';
+import 'package:acharya_setu/screens/home_page.dart';
+import 'package:acharya_setu/screens/question_bank_browser.dart';
+import 'package:acharya_setu/screens/settings.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter routes = GoRouter(
