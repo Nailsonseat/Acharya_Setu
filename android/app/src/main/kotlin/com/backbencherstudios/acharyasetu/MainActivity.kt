@@ -1,4 +1,4 @@
-package com.backbencherstudios.acharyasetu.acharya_setu
+package com.backbencherstudios.acharyasetu
 
 import io.flutter.embedding.android.FlutterActivity
 

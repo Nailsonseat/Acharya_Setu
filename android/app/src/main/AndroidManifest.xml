@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.backbencherstudios.acharyasetu.acharya_setu">
+    package="com.backbencherstudios.acharyasetu">
    <application
         android:label="acharya_setu"
         android:name="${applicationName}"
