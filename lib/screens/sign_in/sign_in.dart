@@ -1,3 +1,6 @@
+
+import 'package:acharya_setu/screens/sign_in/sign_in_layouts/sign_in_narrow_layout.dart';
+import 'package:acharya_setu/screens/sign_in/sign_in_layouts/sign_in_wide_layout.dart';
 import 'package:flutter/material.dart';
 
 
@@ -13,20 +16,15 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal,
-      body:Center(
-        child: Column(
-          children: [
-            Expanded(flex: 1,child: Container(),),
-            Expanded(flex: 2,child: Row(
-              children: [
-                Expanded(flex: 1,child: Container(),),
-                Expanded(flex: 10,child: Card(elevation: 20,child: Container(color: Colors.white,),),),
-                Expanded(flex: 1,child: Container(),)
-              ],
-            ),),
-            Expanded(flex: 1,child: Container(),),
-          ],
-        )
+      body:LayoutBuilder(
+        builder: (context,constraints){
+          if(constraints.maxWidth>700){
+            return const SignInWide();
+          }
+          else {
+            return const SignInNarrow();
+          }
+        },
       ),
     );
   }
