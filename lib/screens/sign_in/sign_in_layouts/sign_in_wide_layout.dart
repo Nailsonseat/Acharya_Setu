@@ -1,3 +1,4 @@
+import 'package:acharya_setu/screens/sign_in/sign_in_options.dart';
 import 'package:flutter/material.dart';
 
 class SignInWide extends StatelessWidget {
@@ -22,14 +23,9 @@ class SignInWide extends StatelessWidget {
                   flex: 1,
                   child: Container(),
                 ),
-                Expanded(
+                const Expanded(
                   flex: 4,
-                  child: Card(
-                    elevation: 20,
-                    child: Container(
-                      color: Colors.white,
-                    ),
-                  ),
+                  child: SignInOptions(),
                 ),
                 Expanded(
                   flex: 1,
