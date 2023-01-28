@@ -1,4 +1,4 @@
-import 'package:acharya_setu/screens/sign_in/sign_in_options.dart';
+import 'package:acharya_setu/screens/sign_in/sign_in_card.dart';
 import 'package:flutter/material.dart';
 
 class SignInNarrow extends StatelessWidget {
