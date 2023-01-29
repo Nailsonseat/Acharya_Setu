@@ -18,7 +18,7 @@ class _SignInPageState extends State<SignInPage> {
       backgroundColor: Colors.teal,
       body:LayoutBuilder(
         builder: (context,constraints){
-          if(constraints.maxWidth>700){
+          if(constraints.maxWidth>constraints.maxHeight){
             return const SignInWide();
           }
           else {

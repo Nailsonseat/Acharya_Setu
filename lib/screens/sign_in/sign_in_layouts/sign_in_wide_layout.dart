@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 class SignInWide extends StatelessWidget {
   const SignInWide({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,15 +19,15 @@ class SignInWide extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  flex: 1,
+                  flex: 5,
                   child: Container(),
                 ),
-                const Expanded(
+                Expanded(
                   flex: 4,
-                  child: SignInOptions(),
+                  child: SignInCard(),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 5,
                   child: Container(),
                 )
               ],

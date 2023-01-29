@@ -16,7 +16,7 @@ class SignInNarrow extends StatelessWidget {
                 children: [
                   Expanded(flex: 1,child: Container(),),
                   //Expanded(flex: 10,child: Card(elevation: 20,child: Container(color: Colors.white,),),),
-                  const Expanded(flex: 10,child: SignInOptions(),),
+                  Expanded(flex: 10,child: SignInCard(),),
                   Expanded(flex: 1,child: Container(),)
                 ],
               ),),
