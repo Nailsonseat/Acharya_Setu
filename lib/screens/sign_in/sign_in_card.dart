@@ -6,11 +6,16 @@ class SignInCard extends StatelessWidget {
   SignInCard({Key? key}) : super(key: key);
 
   final List<String> options = ['Google', "Phone number", "Anonymous"];
+  final List<String> iconPaths = [
+    'lib/assets/icons/icons8-google.svg',
+    'lib/assets/icons/icons8-phone.svg',
+    'lib/assets/icons/icons8-account.svg'
+  ];
 
   @override
   Widget build(BuildContext context) {
-    var height=MediaQuery.of(context).size.height;
-    var width=MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Card(
       elevation: 20,
       color: Colors.white,
@@ -25,10 +30,10 @@ class SignInCard extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Padding(
-                  padding: EdgeInsets.only(top:height/95),
+                  padding: EdgeInsets.only(top: height / 95),
                   child: Text('Sign In',
                       style: GoogleFonts.quicksand(
-                        fontSize: (height+width)/50,
+                        fontSize: (height + width) / 50,
                       )),
                 ),
               ),
@@ -41,13 +46,15 @@ class SignInCard extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.only(top: 5),
                 children: [
-                  for (var option in options)
+                  for (int i = 0; i < options.length; i++)
                     Padding(
-                      padding: EdgeInsets.only(left:20,right:20,bottom: height/130),
+                      padding: EdgeInsets.only(
+                          left: 20, right: 20, bottom: height / 130),
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          padding:EdgeInsets.only(top: height/60,bottom: height/60),
+                          padding: EdgeInsets.only(
+                              top: height / 60, bottom: height / 60),
                           backgroundColor: Colors.white,
                           foregroundColor: Colors.lightBlueAccent,
                           shape: const BeveledRectangleBorder(
@@ -57,11 +64,22 @@ class SignInCard extends StatelessWidget {
                         child: Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 10,right: 10),
-                              child: SvgPicture.asset('lib/assets/icons8-google.svg',height: height/40,width: width/40,),
-                              //child: Image.asset('lib/assets/icons8-google-48.png',height: 25,width: 25,fit: BoxFit.scaleDown,),
+                              padding:
+                                  const EdgeInsets.only(left: 10, right: 10),
+                              child: SvgPicture.asset(
+                                iconPaths[i],
+                                height: height / 40,
+                                width: width / 40,
+                              ),
                             ),
-                            Text(option,style: TextStyle(color: Colors.black,fontSize: height>width?(width)/30:(height+width)/150),),
+                            Text(
+                              options[i],
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: height > width
+                                      ? (width) / 30
+                                      : (height + width) / 150),
+                            ),
                           ],
                         ),
                       ),
