@@ -1,94 +1,22 @@
+import 'package:acharya_setu/screens/sign_in/sign_in_page_layouts/sign_in_method_layouts/sign_in_options.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SignInCard extends StatelessWidget {
   SignInCard({Key? key}) : super(key: key);
 
-  final List<String> options = ['Google', "Phone number", "Anonymous"];
-  final List<String> iconPaths = [
-    'lib/assets/icons/icons8-google.svg',
-    'lib/assets/icons/icons8-phone.svg',
-    'lib/assets/icons/icons8-account.svg'
-  ];
+  PageController controller=PageController();
+  final List<Widget> _widgets=[SignInOptions(),Container(color: Colors.redAccent,)];
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
+
     return Card(
       elevation: 20,
       color: Colors.white,
-      child: Column(
-        children: [
-          Expanded(
-            flex: 1,
-            child: Container(
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.only(left: 25),
-              color: Colors.grey[100],
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Padding(
-                  padding: EdgeInsets.only(top: height / 95),
-                  child: Text('Sign In',
-                      style: GoogleFonts.quicksand(
-                        fontSize: (height + width) / 50,
-                      )),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 4,
-            child: Container(
-              color: Colors.grey[100],
-              child: ListView(
-                padding: const EdgeInsets.only(top: 5),
-                children: [
-                  for (int i = 0; i < options.length; i++)
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: 20, right: 20, bottom: height / 130),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.only(
-                              top: height / 60, bottom: height / 60),
-                          backgroundColor: Colors.white,
-                          foregroundColor: Colors.lightBlueAccent,
-                          shape: const BeveledRectangleBorder(
-                            borderRadius: BorderRadius.only(),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 10, right: 10),
-                              child: SvgPicture.asset(
-                                iconPaths[i],
-                                height: height / 40,
-                                width: width / 40,
-                              ),
-                            ),
-                            Text(
-                              options[i],
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: height > width
-                                      ? (width) / 30
-                                      : (height + width) / 150),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          )
-        ],
+      child: PageView(
+        controller: controller,
+        children:
+          _widgets,
       ),
     );
   }

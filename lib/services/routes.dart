@@ -1,7 +1,7 @@
 import 'package:acharya_setu/screens/home_page.dart';
 import 'package:acharya_setu/screens/question_bank_browser.dart';
 import 'package:acharya_setu/screens/settings.dart';
-import 'package:acharya_setu/screens/sign_in/sign_in.dart';
+import 'package:acharya_setu/screens/sign_in/sign_in_main.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter routes = GoRouter(

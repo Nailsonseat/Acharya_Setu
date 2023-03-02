@@ -1,6 +1,6 @@
 
-import 'package:acharya_setu/screens/sign_in/sign_in_layouts/sign_in_narrow_layout.dart';
-import 'package:acharya_setu/screens/sign_in/sign_in_layouts/sign_in_wide_layout.dart';
+import 'package:acharya_setu/screens/sign_in/sign_in_page_layouts/sign_in_narrow_layout.dart';
+import 'package:acharya_setu/screens/sign_in/sign_in_page_layouts/sign_in_wide_layout.dart';
 import 'package:flutter/material.dart';
 
 
