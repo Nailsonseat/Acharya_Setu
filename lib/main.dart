@@ -1,3 +1,4 @@
+import 'package:acharya_setu/providers/country_code_provider.dart';
 import 'package:acharya_setu/services/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,14 +14,13 @@ class AcharyaSetuMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider(create: (context){})
+        ChangeNotifierProvider(create: (_) => PhoneNumberProvider()),
       ],
-      child: Builder(builder: ((context){
+      child: Builder(builder: ((context) {
         return MaterialApp.router(
           routerConfig: routes,
         );
       })),
     );
-
   }
 }

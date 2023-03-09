@@ -8,14 +8,26 @@ class Country {
   const Country({required this.code, required this.name, required this.flag});
 }
 
-class CountryCodeProvider extends ChangeNotifier {
+class PhoneNumberProvider extends ChangeNotifier {
   Country? _selectedCountry;
 
   Country? get selectedCountry => _selectedCountry;
 
+  String _phoneNumber = '';
+
+  String get phoneNumber => _selectedCountry!.code + _phoneNumber;
+
+  void setNumber(String number) {
+    _phoneNumber = number;
+  }
+
   void setSelectedCountry(Country country) {
     _selectedCountry = country;
     notifyListeners();
+  }
+
+  PhoneNumberProvider() {
+    _selectedCountry = countries[7];
   }
 
   List<Country> countries = const [
@@ -44,5 +56,4 @@ class CountryCodeProvider extends ChangeNotifier {
     Country(code: '+20', name: 'Egypt', flag: '🇪🇬'),
     Country(code: '+27', name: 'South Africa', flag: '🇿🇦'),
   ];
-// Add more country codes as needed
 }
