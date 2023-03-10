@@ -1,5 +1,8 @@
+import 'package:acharya_setu/providers/login_state_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,6 +24,14 @@ class HomePage extends StatelessWidget {
           ElevatedButton(
             onPressed: () => context.go('/browser'),
             child: const Text("Browser"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+              Provider.of<LoginStateProvider>(context, listen: false).logout();
+              context.go("/");
+            },
+            child: const Text("Logout"),
           ),
         ],
       )),
