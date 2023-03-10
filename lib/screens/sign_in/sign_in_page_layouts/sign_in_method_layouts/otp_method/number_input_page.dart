@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../providers/country_code_provider.dart';
+import '../../../../../providers/user_number_provider.dart';
 
 class NumberInputPage extends StatelessWidget {
   const NumberInputPage({Key? key, required this.animatedPageJump})
@@ -14,7 +15,7 @@ class NumberInputPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    var textScale=MediaQuery.of(context).textScaleFactor;
+    var textScale = MediaQuery.of(context).textScaleFactor;
     return Column(
       children: [
         Expanded(
@@ -50,16 +51,23 @@ class NumberInputPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  BackButton(
-                    color: Colors.blueAccent,
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  TextButton(
                     onPressed: () {
                       animatedPageJump("OPTIONS");
                     },
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.arrow_back_ios,
+                          size: 20,
+                        ),
+                        Text("  Back")
+                      ],
+                    ),
                   ),
-                  const Text(
-                    "Back",
-                    style: TextStyle(fontSize: 18,color: Colors.blueAccent),
-                  )
                 ],
               ),
             )),
@@ -68,16 +76,19 @@ class NumberInputPage extends StatelessWidget {
             child: Container(
               alignment: Alignment.center,
               color: Colors.grey[100],
-              child:  Padding(
+              child: Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: Text("This number will be used for OTP verification",
-                  textAlign:TextAlign.center,style: TextStyle(
-                  fontSize: textScale*16,
-                ),),
+                child: Text(
+                  "This number will be used for OTP verification",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: textScale * 15,
+                  ),
+                ),
               ),
             )),
         Expanded(
-          flex: 3,
+          flex: 2,
           child: Container(
             color: Colors.grey[100],
             alignment: Alignment.topCenter,
@@ -87,18 +98,18 @@ class NumberInputPage extends StatelessWidget {
                 children: [
                   Expanded(
                     flex: 2,
-                    child: Consumer<CountryCodeProvider>(
-                        builder: (context, provider, child) {
-                      final selectedCountry =
-                          provider.selectedCountry ?? provider.countries[0];
+                    child: Consumer<PhoneNumberProvider>(
+                        builder: (context, countryProvider, child) {
+                      final selectedCountry = countryProvider.selectedCountry ??
+                          countryProvider.countries[0];
                       return DropdownButton<Country>(
                         value: selectedCountry,
                         onChanged: (Country? country) {
                           if (country != null) {
-                            provider.setSelectedCountry(country);
+                            countryProvider.setSelectedCountry(country);
                           }
                         },
-                        items: provider.countries
+                        items: countryProvider.countries
                             .map<DropdownMenuItem<Country>>((Country country) {
                           return DropdownMenuItem<Country>(
                             value: country,
@@ -108,20 +119,58 @@ class NumberInputPage extends StatelessWidget {
                       );
                     }),
                   ),
-                  const Expanded(
+                  /*Expanded(
                     flex: 5,
                     child: TextField(
                       keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
+                      onChanged: (value) {},
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'\d')),
+                      ],
+                      decoration: const InputDecoration(
                         labelText: "Enter your phone number",
+                        border: OutlineInputBorder(),
                       ),
                     ),
-                  ),
+                  ),*/
+                  Consumer<PhoneNumberProvider>(
+                    builder: (context, provider, child) {
+                      return Expanded(
+                        flex: 5,
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          onChanged: (value) {
+                            provider.setNumber(value);
+                          },
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'\d')),
+                          ],
+                          decoration: const InputDecoration(
+                            labelText: "Enter your phone number",
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
+                      );
+                    },
+                  )
                 ],
               ),
             ),
           ),
         ),
+        Row(
+          children: [
+            Container(
+              alignment: Alignment.centerLeft,
+              child: TextButton(
+                onPressed: () {animatedPageJump("OTP2");},
+                child: Row(
+                  children: const [Text("Continue")],
+                ),
+              ),
+            ),
+          ],
+        )
       ],
     );
   }
