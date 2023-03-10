@@ -7,7 +7,7 @@ class SignInWide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.teal,
+      color: Colors.amber,
       child: Center(
           child: Column(
         children: [
@@ -16,7 +16,7 @@ class SignInWide extends StatelessWidget {
             child: Container(),
           ),
           Expanded(
-            flex: 4,
+            flex: 8,
             child: Row(
               children: [
                 Expanded(
@@ -24,7 +24,7 @@ class SignInWide extends StatelessWidget {
                   child: Container(),
                 ),
                 Expanded(
-                  flex: 4,
+                  flex: 8,
                   child: SignInCard(),
                 ),
                 Expanded(

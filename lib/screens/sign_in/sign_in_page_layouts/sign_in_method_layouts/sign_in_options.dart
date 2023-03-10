@@ -3,8 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SignInOptions extends StatelessWidget {
+  SignInOptions({Key? key, required this.animatedPageJump}) : super(key: key);
 
-  SignInOptions({Key? key}) : super(key: key);
+  final void Function(String) animatedPageJump;
 
   final List<String> options = ['Google', "Phone number", "Anonymous"];
 
@@ -18,6 +19,7 @@ class SignInOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    var textScaler = MediaQuery.of(context).textScaleFactor;
     return Column(
       children: [
         Expanded(
@@ -32,10 +34,17 @@ class SignInOptions extends StatelessWidget {
                 padding: EdgeInsets.only(top: height / 95),
                 child: Text('Sign In',
                     style: GoogleFonts.quicksand(
-                      fontSize: (height + width) / 50,
+                      fontSize: /*(height + width) / 50*/ textScaler * 30,
                     )),
               ),
             ),
+          ),
+        ),
+        Container(
+          color: Colors.grey[100],
+          child: const Divider(
+            color: Colors.black,
+            thickness: .5,
           ),
         ),
         Expanded(
@@ -50,7 +59,16 @@ class SignInOptions extends StatelessWidget {
                     padding: EdgeInsets.only(
                         left: 20, right: 20, bottom: height / 130),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        switch (i) {
+                          case 0:
+                            animatedPageJump("GOOGLE");
+                            break;
+                          case 1:
+                            animatedPageJump("OTP1");
+                            break;
+                        }
+                      },
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.only(
                             top: height / 60, bottom: height / 60),
@@ -63,8 +81,7 @@ class SignInOptions extends StatelessWidget {
                       child: Row(
                         children: [
                           Padding(
-                            padding:
-                            const EdgeInsets.only(left: 10, right: 10),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
                             child: SvgPicture.asset(
                               iconPaths[i],
                               height: height / 40,
@@ -74,10 +91,9 @@ class SignInOptions extends StatelessWidget {
                           Text(
                             options[i],
                             style: TextStyle(
-                                color: Colors.black,
-                                fontSize: height > width
-                                    ? (width) / 30
-                                    : (height + width) / 150),
+                              color: Colors.black,
+                              fontSize:textScaler*15 /*height > width ? (width) / 30 : (height + width) / 150*/,
+                            ),
                           ),
                         ],
                       ),
