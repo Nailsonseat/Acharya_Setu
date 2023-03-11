@@ -26,8 +26,8 @@ class HomePage extends StatelessWidget {
             child: const Text("Browser"),
           ),
           ElevatedButton(
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
+            onPressed: () async{
+              await FirebaseAuth.instance.signOut();
               Provider.of<LoginStateProvider>(context, listen: false).logout();
               context.go("/");
             },
